@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CS 424</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        body {
+            color: #fff;
+            font-family: sans-serif;
+            font-size: medium;
+            background-color: #bebebe;
+            margin: 0px;
+        }
+
+        a.title:link,
+        a.title:visited {
+            color: black;
+            text-decoration: underline;
+            cursor: auto;
+        }
+
+        a.title:hover {
+            color: #3c3c3c;
+        }
+
+        a.title:link:active,
+        a.title:visited:active {
+            color: (internal value);
+        }
+
+        a:link,
+        a:visited {
+            color: white;
+            text-decoration: underline;
+            cursor: auto;
+        }
+
+        a:hover {
+            color: #d1d1d1;
+        }
+
+        a:link:active,
+        a:visited:active {
+            color: (internal value);
+        }
+
+        .navBar {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 50px;
+            color: #2c2c2c;
+            background-color: #bebebe;
+            box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            line-height: 50px;
+            padding-left: 40px;
+            font-size: large;
+        }
+
+        .week {
+            width: 85%;
+            height: auto;
+            min-width: 600px;
+            min-height: 82px;
+            margin: 15px auto;
+            padding: 10px 0px 10px 0px;
+            box-shadow: 0px 5px 13px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+        }
+
+        .expandable {
+            width: 100%;
+            height: auto;
+            min-height: 82px;
+            padding: 1px 0px 1px 0px;
+            margin: -10px 0px -10px 0px;
+        }
+
+        .expandable:hover {
+            background-color: rgba(36, 36, 36, 0.25);
+            cursor: pointer;
+        }
+
+        .title {
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        .expandSymbol {
+            text-align: left;
+            padding-left: 30px;
+            line-height: normal;
+            transition: 0.5s;
+        }
+
+        .description {
+            display: none;
+            text-align: left;
+            padding-left: 50px;
+            line-height: 34px;
+            transition: 0.5s;
+        }
+
+        .content {
+            display: none;
+            height: auto;
+            width: auto;
+            padding: 10px 30px;
+        }
+
+        .line {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-top: 1px solid rgba(92, 92, 92, 0.5);
+        }
+
+        iframe {
+            border: 0;
+            display: block;
+            margin: auto;
+        }
+
+        .pulse {
+            outline: 0px solid rgba(44, 44, 44, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .pulse:hover {
+            animation: none;
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                -webkit-outline: 0px solid rgba(44, 44, 44, 0.5);
+            }
+            70% {
+                -webkit-outline: 5px solid rgba(44, 44, 44, 0.5);
+            }
+            100% {
+                -webkit-outline: 0px solid rgba(44, 44, 44, 0.5);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                -moz-outline: 0px solid rgba(44, 44, 44, 0.5);
+                outline: 0px solid rgba(44, 44, 44, 0.5);
+            }
+            70% {
+                -moz-outline: 5px solid rgba(44, 44, 44, 0.5);
+                outline: 5px solid rgba(44, 44, 44, 0.5);
+            }
+            100% {
+                -moz-outline: 0px solid rgba(44, 44, 44, 0.5);
+                outline: 0px solid rgba(44, 44, 44, 0.5);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navBar">
+        <div style="position: absolute; left: 52px;">Peter Hanula, CS424 s2018</div>
+        <div style="position: absolute; height: 50px; right: 35px; bottom: -10px;">
+            <!--
+            <a class="title" href="https://github.com/p10trH/cs491_VR" target="_blank">
+                <img src="/cs491_VR/resources/icons/gitHubLogo.png" alt="github.com/p10trH" style="width:30px;height:30px;">
+            </a>
+        -->
+        </div>
+    </div>
+
+    <div style="width: 100%; height: 50px"></div>
+
+
+
+<!--
+    <div class="week" style="background-color: hsl(95, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 15 (12/4) - Try Everything</h5>
+            <h1 class="title" style="float: right">P3</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <a href="https://youtu.be/Ea6CthWTEFM" target="_blank">YouTube Video!</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="https://youtu.be/kmxWxYlyPhc" target="_blank">YouTube Video! (extended look)</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <iframe width="90%" height="700px" src="https://docs.google.com/document/d/e/2PACX-1vQIECbbEm5ocb-CF9PVhMtxPsxMqyr4b6Du7ObDmBBiibqkPoM5YBLl1QvrOL7UHUr-EpJkLc8X8ZJi/pub?embedded=true"></iframe>
+            <div style="width: 1px; height: 15px;"></div>
+            <div class="line" style="display: block"></div>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_proposal_P3.pdf" target="_blank">Original Proposal (11/3)</a>
+            <div style="width: 1px; height: 15px;"></div>
+
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(117, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 14 (12/1) - Putting it all Together</h5>
+            <h1 class="title" style="float: right">A9</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_putItTogether_A9.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_putItTogether_A9.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(139, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 12 & 13 (11/24) - Reflecting on SC Presentations</h5>
+            <h1 class="title" style="float: right">A8</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <div>First week of presentations. <a href="/cs491_VR/resources/cs491_critiqueSC_A8.pdf" target="_blank"> (Alternative PDF link)</a></div>
+            <div style="width: 1px; height: 15px;"></div>
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_critiqueSC_A8.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <div style="width: 1px; height: 15px;"></div>
+
+            <div>Second week of presentations. <a href="/cs491_VR/resources/cs491_critiqueSC-2_A8.pdf" target="_blank"> (Alternative PDF link)</a></div>
+            <div style="width: 1px; height: 15px;"></div>
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_critiqueSC-2_A8.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(161, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 12 & 13 (11/13) - Student's Choice Presentations</h5>
+            <h1 class="title" style="float: right">SC</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <iframe width="90%" height="700px" src="https://docs.google.com/document/d/e/2PACX-1vSCdmruf6eXtOBILFD049vbpSXRDnlclBS3jott3nKNv8beY3TWdupib3JZx_Dl0t_QL1ON9YU3cO9d/pub?embedded=true"></iframe>
+            <div style="width: 1px; height: 15px;"></div>
+            <div class="line" style="display: block"></div>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_VRkeyboard_SC.pdf" target="_blank">Static PDF version</a>
+            <div style="width: 1px; height: 15px;"></div>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(183, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 11 (11/10) - Holoportation</h5>
+            <h1 class="title" style="float: right">A7</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_holoportation_A7.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_holoportation_A7.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(205, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 9 (10/23) - Here Comes the Sun</h5>
+            <h1 class="title" style="float: right">P2</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <div>This was a group project. Here are some links to follow.</div>
+            <div style="width: 1px; height: 15px;"></div>
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_overview_P2.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_overview_P2.pdf" target="_blank">Alternative PDF link</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="http://bartkup.me/projects/" target="_blank">Group Project Page</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="https://youtu.be/CrGLgQc3Kb0" target="_blank">YouTube Video Link</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="https://uofi.box.com/s/fuuogpfimwkbs6lf9yr628gsiyn848e2" target="_blank">Source and Build</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="https://uofi.box.com/s/metu00ejf2xyws4oowxmtub7yam7qilu" target="_blank">Python Data Tools</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(227, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 8 (10/20) - AR Astronomy</h5>
+            <h1 class="title" style="float: right">A6</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_spaceAR_A6.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_spaceAR_A6.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(249, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 7 (10/13) - AR Furniture</h5>
+            <h1 class="title" style="float: right">A5</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_furnitureAR_A5.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_furnitureAR_A5.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+
+    <div class="week" style="background-color: hsl(271, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 5 & 6 (10/6) - Project 1 Reviews</h5>
+            <h1 class="title" style="float: right">A4</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_projectReviews_A4.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_projectReviews_A4.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(293, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 5 (9/25) - In Your Room</h5>
+            <h1 class="title" style="float: right">P1</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_overview_P1.pdf"></object>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KXWRU2yzeoo?rel=0" frameborder="0" allowfullscreen></iframe>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_overview_P1.pdf" target="_blank">Alternative PDF link</a>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="https://youtu.be/KXWRU2yzeoo" target="_blank">YouTube Video Link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(315, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 4 (9/22) - Walking Small</h5>
+            <h1 class="title" style="float: right">A3</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs491_scale_A3.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_scale_A3.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(337, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 3 (9/15) - Google Translate</h5>
+            <h1 class="title" style="float: right">A2</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs491_VR/resources/cs424_week1.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs491_VR/resources/cs491_translate_A2.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+-->
+
+    <div class="week" style="background-color: hsl(359, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" onmouseover="showDescription(this, true)" onmouseout="showDescription(this, false)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h5 class="description" style="float: left">Week 1</h5>
+            <h1 class="title" style="float: right">A1</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+            <object width="100%" height="700px" data="/cs424_VIS/resources/cs424_week1.pdf"></object>
+            <div style="width: 1px; height: 15px;"></div>
+            <a href="/cs424_VIS/resources/cs424_week1.pdf" target="_blank">Alternative PDF link</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(event) {
+
+            var resetPos = false;
+
+
+            var arrowSymbol = event.parentNode.getElementsByClassName("expandSymbol")[0];
+
+            for (var i = 1; i < event.parentNode.children.length; i++) {
+                //console.log(event.parentNode.children[i].className);
+
+                if (event.parentNode.children[i].style.display === "block") {
+                    event.parentNode.children[i].style.display = "none";
+                } else {
+                    event.parentNode.children[i].style.display = "block";
+
+                    resetPos = true;
+                    //event.parentNode.scrollIntoView({
+                    //    behavior: "smooth",
+                    //    block: "start",
+                    //    inline: "start"
+                    //});
+                    //event.parentNode.scrollTop = 100;
+
+                }
+            }
+
+            if (arrowSymbol.innerText == "+")
+                arrowSymbol.innerText = "=";
+            else
+                arrowSymbol.innerText = "+";
+
+            if (resetPos) {
+
+                const element = event.parentNode;
+                const elementRect = element.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                const offset = absoluteElementTop - 65;
+                window.scrollTo({
+                    top: offset,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function showDescription(event, flag) {
+
+            var desc = event.parentNode.getElementsByClassName("description")[0];
+
+            if (flag)
+                desc.style.display = "block";
+            else
+                desc.style.display = "none";
+
+        }
+
+    </script>
+
+    <!--
+
+
+    <div class="week" style="background-color: hsl(73, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h1 class="title" style="float: right">Week 14</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(51, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h1 class="title" style="float: right">Week 15</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+
+        </div>
+    </div>
+
+    <div class="week" style="background-color: hsl(29, 19%, 54%);">
+        <div class="expandable" onclick="toggleContent(this)" style="clear: both">
+            <h1 class="expandSymbol" style="float: left">+</h1>
+            <h1 class="title" style="float: right">Week 16</h1>
+        </div>
+        <div class="line"></div>
+        <div class="content">
+
+        </div>
+    </div>
+
+-->
+
+</body>
+
+</html>
