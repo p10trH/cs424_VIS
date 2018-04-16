@@ -412,7 +412,50 @@
 
 
             var arrowSymbol = event.parentNode.getElementsByClassName("expandSymbol")[0];
+            
+            
+            
+            
+            
+            var mainContent = document.getElementById("mainContent")
+            
+            for (var x = 0; x < mainContent.children.length; x++) {
+                
+                if (mainContent.children[x] == event.parentNode) {
+                    
+                    for (var i = 1; i < event.parentNode.children.length; i++) {
+                    //console.log(event.parentNode.children[i].className);
 
+                        if (event.parentNode.children[i].style.display === "block") {
+                            event.parentNode.children[i].style.display = "none";
+                        } else {
+                            event.parentNode.children[i].style.display = "block";
+
+                            resetPos = true;
+                        }
+                    }
+                } else {
+                    
+                    for (var j = 1; j < mainContent.children[x].children.length; j++) {    
+                        mainContent.children[x].children[j].style.display = "none";
+                        
+                    }    
+                }
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+/*
             for (var i = 1; i < event.parentNode.children.length; i++) {
                 //console.log(event.parentNode.children[i].className);
 
@@ -431,6 +474,7 @@
 
                 }
             }
+*/            
 
             if (arrowSymbol.innerText == "+")
                 arrowSymbol.innerText = "=";
